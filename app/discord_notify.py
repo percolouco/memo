@@ -19,7 +19,7 @@ def send_reminder(memo: dict):
             "title": f"🔔 Rappel : {memo['title']}",
             "description": f"{desc_line}\n📅 Créé le {memo['created_at'][:10]}",
             "color": 0xf59e0b,
-            "footer": {"text": "memo.nas.percolouco.com"}
+            "footer": {"text": "todo.nas.percolouco.com"}
         }]
     }
     try:
