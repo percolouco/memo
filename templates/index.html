@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mémos</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>📝 Mémos</h1>
+      <div class="header-actions">
+        <button class="btn btn-ghost" id="btn-settings" title="Paramètres">⚙️</button>
+      </div>
+    </header>
+
+    <!-- Add memo form -->
+    <section class="add-form card">
+      <div class="form-row">
+        <input type="text" id="input-title" placeholder="Nouveau mémo…" maxlength="200" />
+      </div>
+      <div class="form-row form-row-sub">
+        <textarea id="input-desc" placeholder="Description (optionnelle)" rows="2" maxlength="1000"></textarea>
+      </div>
+      <div class="form-row form-row-sub form-row-bottom">
+        <label>🔔 Rappel quotidien à <input type="time" id="input-time" value="09:00" /></label>
+        <button class="btn btn-primary" id="btn-add">Ajouter</button>
+      </div>
+    </section>
+
+    <!-- Tabs -->
+    <div class="tabs">
+      <button class="tab active" data-tab="pending">En cours <span id="badge-pending" class="badge"></span></button>
+      <button class="tab" data-tab="done">Terminés</button>
+    </div>
+
+    <!-- Memo list -->
+    <section id="list-pending" class="memo-list"></section>
+    <section id="list-done" class="memo-list hidden"></section>
+
+    <!-- Settings modal -->
+    <div id="modal-settings" class="modal hidden">
+      <div class="modal-box card">
+        <h2>Paramètres</h2>
+        <label>Webhook Discord</label>
+        <input type="text" id="input-webhook" placeholder="https://discord.com/api/webhooks/…" />
+        <div class="modal-actions">
+          <button class="btn btn-ghost" id="btn-settings-cancel">Annuler</button>
+          <button class="btn btn-primary" id="btn-settings-save">Enregistrer</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Edit modal -->
+    <div id="modal-edit" class="modal hidden">
+      <div class="modal-box card">
+        <h2>Modifier le mémo</h2>
+        <input type="hidden" id="edit-id" />
+        <label>Titre</label>
+        <input type="text" id="edit-title" maxlength="200" />
+        <label>Description</label>
+        <textarea id="edit-desc" rows="3" maxlength="1000"></textarea>
+        <label>Rappel quotidien à</label>
+        <input type="time" id="edit-time" />
+        <div class="modal-actions">
+          <button class="btn btn-ghost" id="btn-edit-cancel">Annuler</button>
+          <button class="btn btn-danger" id="btn-edit-delete">Supprimer</button>
+          <button class="btn btn-primary" id="btn-edit-save">Enregistrer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
